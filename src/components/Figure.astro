@@ -87,11 +87,11 @@ const hasVisual = Astro.slots.has("default");
     letter-spacing: var(--tracking-mono);
   }
 
-  .figure__frame--link {
+  .figure__frame:not(.figure__frame--placeholder) {
     transition: border-color 140ms linear;
   }
 
-  .figure__frame--link:hover {
+  .figure__frame:not(.figure__frame--placeholder):hover {
     border-color: var(--pink);
   }
 
