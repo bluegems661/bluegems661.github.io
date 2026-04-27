@@ -14,12 +14,16 @@ interface Props {
   caption?: string;
   meta?: string;   // e.g. "2024 · Blender · commissioned"
   href?: string;   // optional: makes the whole figure clickable
+  /** When true, omit the leading § divider. Use on Fig. 1. */
+  first?: boolean;
 }
 
-const { n, caption, meta, href } = Astro.props;
+const { n, caption, meta, href, first } = Astro.props;
 const WrapperTag = href ? "a" : "div";
 const hasVisual = Astro.slots.has("default");
 ---
+{!first && <div class="fig-divider" aria-hidden="true">§</div>}
+
 <figure class="figure">
   <WrapperTag
     class:list={[
@@ -52,20 +56,24 @@ const hasVisual = Astro.slots.has("default");
     margin: 0;
   }
 
-  .figure + :global(.figure) {
-    margin-top: var(--space-12);
+  /* § ornament between figures — hairlines flank a single mono section symbol. */
+  .fig-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: var(--space-16) 0;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.4em;
+    color: var(--ink-3);
   }
 
-  /* Editorial ornament between consecutive figures — lightest possible separator. */
-  .figure + :global(.figure)::before {
-    content: "§";
-    display: block;
-    text-align: center;
-    font-family: var(--font-serif);
-    font-size: var(--fs-md);
-    color: var(--ink-3);
-    line-height: 1;
-    margin-bottom: var(--space-12);
+  .fig-divider::before,
+  .fig-divider::after {
+    content: "";
+    flex: 1;
+    border-top: 1px solid var(--rule-faint);
+    margin: 0 1.25rem;
   }
 
   .figure__frame {
