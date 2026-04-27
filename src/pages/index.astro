@@ -178,10 +178,11 @@ import Figure from "../components/Figure.astro";
 
     <Figure
       n="5"
-      caption="isitabluegem.com — CS2 case-hardened pattern finder"
       meta="live · real userbase · entirely different domain"
-      href="https://isitabluegem.com"
     >
+      <Fragment slot="caption">
+        <a href="https://isitabluegem.com" rel="noopener">isitabluegem.com</a> — CS2 case-hardened pattern finder
+      </Fragment>
       <div class="video-wrap" slot="default">
         <video
           class="ton-video"

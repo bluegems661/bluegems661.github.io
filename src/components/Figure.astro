@@ -11,7 +11,7 @@
 
 interface Props {
   n: number | string;
-  caption: string;
+  caption?: string;
   meta?: string;   // e.g. "2024 · Blender · commissioned"
   href?: string;   // optional: makes the whole figure clickable
 }
@@ -37,7 +37,7 @@ const hasVisual = Astro.slots.has("default");
   <figcaption class="figure__caption">
     <span class="figure__number">Fig. {n}</span>
     <span class="figure__sep" aria-hidden="true">—</span>
-    <span class="figure__title">{caption}</span>
+    <span class="figure__title">{Astro.slots.has("caption") ? <slot name="caption" /> : caption}</span>
     {meta && <span class="figure__meta"> · {meta}</span>}
   </figcaption>
 
