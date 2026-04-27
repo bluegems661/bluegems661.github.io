@@ -132,6 +132,10 @@ import Figure from "../components/Figure.astro";
       caption="CRYSTALLINE — secondary structure from chemical shifts"
       meta="in development · academic preview"
     >
+      <div class="fig-grid fig-grid--stack" slot="default">
+        <img src="/figures/facet-idp.webp" alt="FACET output — intrinsically disordered protein test case" width="3000" height="596" loading="lazy" />
+        <img src="/figures/facet-struct.webp" alt="FACET output — folded protein structure test case" width="3000" height="874" loading="lazy" />
+      </div>
       <Fragment slot="body">
         <p>
           Given assigned backbone chemical shifts, infer local dihedral
@@ -299,6 +303,10 @@ import Figure from "../components/Figure.astro";
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2px;
+  }
+
+  .fig-grid--stack {
+    grid-template-columns: 1fr;
   }
 
   .fig-grid img {
