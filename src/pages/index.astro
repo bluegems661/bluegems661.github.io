@@ -117,11 +117,12 @@ import Figure from "../components/Figure.astro";
       />
       <Fragment slot="body">
         <p>
-          A 400K-parameter SchNet graph neural network trained on 4,834
+          A 739K-parameter equivariant PaiNN graph neural network trained on 3,433
           BMRB-linked experimental structures. Predicts all six backbone
-          nuclei (H, HA, N, CA, CB, C') from any PDB, mmCIF, or AlphaFold
+          nuclei (¹H, ¹Hα, ¹⁵N, ¹³Cα, ¹³Cβ, ¹³C') from any PDB, mmCIF, or AlphaFold
           structure — with calibrated uncertainties. Beats SPARTA+, LEGOLAS,
-          and UCBShift2 on a 712-protein homology-separated test set.
+          and UCBShift2 on every nucleus across a 735-protein, homology-separated test set
+          (e.g. ¹Hα MAE 0.156&nbsp;ppm vs 0.217 / 0.239 / 0.265; ¹³Cα MAE 0.72&nbsp;ppm vs 0.88 / 1.01 / 1.46).
           <a href="https://huggingface.co/spaces/SiXa18/caustic" rel="noopener">Try&nbsp;it&nbsp;in&nbsp;your&nbsp;browser</a>.
         </p>
       </Fragment>
