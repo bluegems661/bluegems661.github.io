@@ -32,11 +32,10 @@ import Figure from "../components/Figure.astro";
   <section class="bio">
     <p class="bio__label mono">§ 00.2 — About</p>
     <p class="bio__body">
-      I am a scientist who loves to build things. PhD and postdoc in molecular biophysics with a strong focus on NMR spectroscopy
+      I am a scientist who loves to build things. PhD and postdoc in molecular biophysics with a strong focus on structural biology
       (Institut&nbsp;Pasteur, FMP&nbsp;Berlin); currently Scientist at
-      Bachem in Switzerland, working on quality control of peptide
-      therapeutics. On the side I make scientific visualizations in Blender,
-      build  small NMR tools, and occasionally stumble into web development/design.
+      Bachem in Switzerland. On the side I make scientific visualizations,
+      build small NMR tools, and occasionally stumble into web development/design.
     </p>
   </section>
 
@@ -52,10 +51,7 @@ import Figure from "../components/Figure.astro";
         <p class="pillar__no mono">01.1</p>
         <h3 class="pillar__title">NMR Spectroscopy</h3>
         <p class="pillar__body">
-          Biomolecular NMR. Method development,
-          probabilistic approaches to
-          spectral interpretation. Happiest at the intersection of classical
-          NMR and modern computation - especially if ML plays a role.
+          Biomolecular NMR — method development at the intersection of classical spectroscopy and modern computation.
         </p>
       </li>
 
@@ -63,18 +59,15 @@ import Figure from "../components/Figure.astro";
         <p class="pillar__no mono">01.2</p>
         <h3 class="pillar__title">Scientific Visualization</h3>
         <p class="pillar__body">
-          Blender for molecular structures — protein complexes, assemblies,
-          mechanisms. Renders that aim to make complex
-          concepts legible. Recent work appears on the
-          landing page of <a href="https://evolutionaryscale.ai" rel="noopener">EvolutionaryScale</a>.
+          Blender renders of proteins and mechanisms, recently for EvolutionaryScale.
         </p>
       </li>
 
       <li class="pillar">
         <p class="pillar__no mono">01.3</p>
-        <h3 class="pillar__title">Scientific Software &amp; Products</h3>
+        <h3 class="pillar__title">Scientific Software</h3>
         <p class="pillar__body">
-          Full-stack, end-to-end. Currently building ML-based tools for NMR data analysis.
+          Full-stack, end-to-end. ML-based tools for NMR data analysis.
         </p>
       </li>
     </ol>
@@ -242,7 +235,7 @@ import Figure from "../components/Figure.astro";
   <footer class="colophon">
     <div class="colophon__rule" aria-hidden="true"></div>
     <p class="mono">
-      Set in Hanken Grotesk and JetBrains Mono.
+      Set in Newsreader and JetBrains Mono.
       Hand-built in Astro. Hosted statically.
       © 2026 Max Zinke.
     </p>
@@ -338,6 +331,13 @@ import Figure from "../components/Figure.astro";
     letter-spacing: var(--tracking-tighter);
     color: var(--ink);
     max-width: none;
+    hanging-punctuation: first last;
+  }
+
+  .lede__text::first-letter {
+    font-size: 1.18em;
+    line-height: 1;
+    margin-right: 0.02em;
   }
 
   /* ---------- bio ---------- */
@@ -357,52 +357,42 @@ import Figure from "../components/Figure.astro";
 
   .pillars__list {
     display: grid;
-    gap: var(--space-8);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-6) var(--space-8);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--rule);
   }
 
   .pillar {
     display: grid;
-    grid-template-columns: 4.5rem 1fr;
-    gap: 0 var(--space-5);
-    align-items: baseline;
-    padding-top: var(--space-4);
-    border-top: 1px solid var(--rule);
+    grid-template-rows: auto auto 1fr;
+    gap: 0;
   }
 
   .pillar__no {
     font-size: var(--fs-xs);
     color: var(--turquoise);
-    grid-column: 1;
-    grid-row: 1;
+    margin-bottom: var(--space-2);
   }
 
   .pillar__title {
-    grid-column: 2;
-    grid-row: 1;
-    font-size: var(--fs-lg);
-    font-weight: 500;
+    font-size: var(--fs-base);
+    font-weight: 400;            /* roman, not bold */
+    letter-spacing: var(--tracking-tight);
+    margin-bottom: var(--space-1);
   }
 
   .pillar__body {
-    grid-column: 2;
-    grid-row: 2;
-    margin-top: var(--space-2);
+    margin: 0;
+    font-size: var(--fs-sm);
     color: var(--ink-2);
+    line-height: 1.5;
+    letter-spacing: 0.005em;
+    max-width: none;
   }
 
-  @media (max-width: 30rem) {
-    .pillar {
-      grid-template-columns: 1fr;
-      gap: var(--space-1) 0;
-    }
-    .pillar__no,
-    .pillar__title,
-    .pillar__body {
-      grid-column: 1;
-    }
-    .pillar__no   { grid-row: 1; }
-    .pillar__title { grid-row: 2; }
-    .pillar__body  { grid-row: 3; }
+  @media (max-width: 44rem) {
+    .pillars__list { grid-template-columns: 1fr; gap: var(--space-5); }
   }
 
   /* ---------- contact ---------- */

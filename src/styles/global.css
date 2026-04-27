@@ -17,51 +17,48 @@
 /* ---------- tokens ---------- */
 
 :root {
-  /* Paper + ink. Cream is a warm, slightly yellowed drafting paper;
-     ink is deep and very faintly cool, never pure black. */
-  --paper:        oklch(96.5% 0.018 88);
-  --paper-deeper: oklch(93.5% 0.022 88);
-  --ink:          oklch(22% 0.018 245);
-  --ink-2:        oklch(42% 0.016 245);  /* secondary body */
-  --ink-3:        oklch(50% 0.013 245);  /* metadata, quiet labels — still 4.5:1 on paper */
-  --rule:         oklch(80% 0.014 88);   /* hairline, drafted on paper */
-  --rule-faint:   oklch(88% 0.011 88);
+  /* surface: ink, not paper */
+  --paper:        oklch(18% 0.012 245);
+  --paper-deeper: oklch(22% 0.014 245);
+  --ink:          oklch(94% 0.012 88);
+  --ink-2:        oklch(78% 0.012 88);
+  --ink-3:        oklch(62% 0.011 88);
+  --rule:         oklch(34% 0.014 245);
+  --rule-faint:   oklch(28% 0.012 245);
 
-  /* Accents — the 10%. Pink is a faded riso marker; turquoise is aged
-     copperplate ink. Both tuned to clear WCAG AA (4.5:1) on --paper for
-     small text usage. If editing, verify in devtools against the exact
-     paper value — chroma at fixed L changes the luminance in non-obvious
-     ways, so do not trust eyeballing. */
-  --pink:         oklch(48% 0.19 15);
-  --pink-mark:    oklch(66% 0.17 15);    /* large marks / rules only — not text */
-  --turquoise:    oklch(45% 0.13 205);
-  --turq-mark:    oklch(66% 0.12 205);   /* large marks / rules only — not text */
+  /* primary accent: rust (replaces pink as the link/mark color) */
+  --pink:         oklch(50% 0.15 40);   /* rust */
+  --pink-mark:    oklch(68% 0.14 40);
 
-  /* Typography — provisional. Hanken Grotesk for body + headings,
-     JetBrains Mono for captions, figure labels, dates, metadata. */
-  --font-sans: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  /* secondary accent: turquoise stays for §-numbers, focus rings, selection */
+  --turquoise:    oklch(76% 0.12 205);
+  --turq-mark:    oklch(60% 0.13 205);
 
-  /* Modular scale, base 17px. Body sits comfortably wide. */
-  --fs-xs:   0.75rem;    /* 12.75px — fine mono metadata */
-  --fs-sm:   0.8125rem;  /* 13.8px  — captions */
-  --fs-base: 1rem;       /* 17px    — body */
-  --fs-md:   1.125rem;   /* 19px    — lead paragraph */
-  --fs-lg:   1.5rem;     /* 25.5px  — h3 */
-  --fs-xl:   2.25rem;    /* 38.25px — h2 */
-  --fs-2xl:  3.75rem;    /* 63.75px — hero / tagline */
+  /* type — Editorial pairing */
+  --font-sans:    "Newsreader", "Fraunces", Georgia, serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* tracking — looser for the serif display sizes */
+  --tracking-tight:   -0.015em;
+  --tracking-tighter: -0.025em;
+
+  /* Modular scale, base 17px. */
+  --fs-xs:   0.8125rem;   /* mono metadata, captions, labels */
+  --fs-sm:   0.875rem;
+  --fs-base: 1rem;
+  --fs-md:   1.125rem;
+  --fs-lg:   1.5rem;
+  --fs-xl:   2.25rem;
+  --fs-2xl:  3.75rem;
 
   --lh-tight:  1.12;
   --lh-snug:   1.25;
   --lh-normal: 1.55;
 
-  /* Layout — generous document width, with room for margin notes. */
-  --measure: 36rem;          /* primary column: ~612px */
+  --measure: 36rem;
   --gutter:  2.5rem;
-  --margin-col: 11rem;       /* margin-note column on wide screens */
+  --margin-col: 11rem;
 
-  /* Spacing scale — 4px base. Every gap on the page should map to one of
-     these; ad-hoc values are drift. */
   --space-1:  0.25rem;
   --space-2:  0.5rem;
   --space-3:  0.75rem;
@@ -73,17 +70,14 @@
   --space-12: 3rem;
   --space-16: 4rem;
 
-  /* Tracking — tight for hero, normal everywhere else. */
-  --tracking-tight:   -0.01em;
-  --tracking-tighter: -0.018em;   /* display sizes only */
-  --tracking-flat:    0;
-  --tracking-mono:    0.02em;
+  --tracking-flat: 0;
+  --tracking-mono: 0.02em;
 }
 
 html {
   font-size: 106.25%;  /* 17px assuming 16px default */
   -webkit-text-size-adjust: 100%;
-  color-scheme: light;
+  color-scheme: dark;
   background: var(--paper);
 }
 
@@ -289,7 +283,8 @@ hr {
 }
 
 .section-head__title {
-  /* Inherit size/weight from global h2; keep this hook for future overrides. */
+  font-size: var(--fs-lg);        /* 1.5rem */
+  font-weight: 400;
   letter-spacing: var(--tracking-tight);
 }
 
@@ -338,3 +333,12 @@ hr {
     transition: none !important;
   }
 }
+
+/* ---------- editorial typesetting ---------- */
+
+h1, h2, h3 { font-weight: 400; }
+.titleblock__name { font-weight: 400; }
+
+.section-head__title { font-style: italic; }
+
+/* oversized initial on the thesis — applied in index.astro's scoped style */
