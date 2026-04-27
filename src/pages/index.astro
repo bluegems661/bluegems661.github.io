@@ -130,19 +130,25 @@ import Figure from "../components/Figure.astro";
 
     <Figure
       n="3"
-      caption="CRYSTALLINE — secondary structure from chemical shifts"
-      meta="in development · academic preview"
+      caption="FACET — per-residue backbone dihedrals (φ, ψ) and secondary structure from chemical shifts"
+      meta="CRYSTALLINE module · open source · live demo"
     >
       <div class="fig-grid fig-grid--stack" slot="default">
-        <img src="/figures/facet-idp.webp" alt="FACET output — intrinsically disordered protein test case" width="3000" height="596" loading="lazy" />
-        <img src="/figures/facet-struct.webp" alt="FACET output — folded protein structure test case" width="3000" height="874" loading="lazy" />
+        <img src="/figures/facet-struct.webp" alt="FACET output — Ubiquitin (BMRB 6457), folded β-grasp topology" width="3000" height="874" loading="lazy" />
+        <img src="/figures/facet-idp.webp" alt="FACET output — ACTR free state (BMRB 15397), fold-on-binding IDP" width="3000" height="596" loading="lazy" />
       </div>
       <Fragment slot="body">
         <p>
-          Given assigned backbone chemical shifts, infer local dihedral
-          geometry and the secondary structure that follows. The probabilistic
-          framing is the interesting part — the outputs are distributions,
-          not point estimates.
+          A 1.3M-parameter retrieval-augmented transformer with k-NN lookup over a 220K-residue
+          reference index. Predicts (φ, ψ) with calibrated confidence tiers, secondary structure
+          for folded proteins, and α / β / PPII state populations for IDPs — directly from
+          ¹H, ¹Hα, ¹⁵N, ¹³Cα, ¹³Cβ, ¹³C' chemical shifts, no structure required.
+          (a) Ubiquitin (BMRB&nbsp;6457): the canonical β-grasp topology fully recovered.
+          (b) ACTR free state (BMRB&nbsp;15397, fold-on-binding IDP): the transient α-helix
+          at residues 26–37 — the segment that locks in upon NCBD binding — cleanly resolved.
+          Beats TALOS-N by 1.26° (median&nbsp;Δθ) in the high-confidence "Strong" tier on a
+          55,036-residue, homology-separated test set.
+          Try&nbsp;it&nbsp;in&nbsp;your&nbsp;browser.
         </p>
       </Fragment>
     </Figure>
