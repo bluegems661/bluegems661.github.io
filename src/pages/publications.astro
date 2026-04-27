@@ -1,0 +1,191 @@
+---
+import Document from "../layouts/Document.astro";
+import PubGroup from "../components/PubGroup.astro";
+import Publication from "../components/Publication.astro";
+---
+<Document
+  title="Publications — Max Zinke"
+  description="Peer-reviewed publications, reviews, and conference proceedings by Maximilian Zinke."
+  pathname="/publications/"
+>
+
+  <header class="titleblock">
+    <div class="titleblock__row titleblock__row--rule">
+      <span class="titleblock__label mono">02 · Sheet · Bibliography</span>
+      <span class="titleblock__label mono"><a href="/">← Portfolio</a></span>
+    </div>
+    <div class="titleblock__row titleblock__row--name">
+      <h1 class="titleblock__name">Publications</h1>
+    </div>
+    <div class="titleblock__row titleblock__row--meta">
+      <span class="mono">17 entries · 2016–2024</span>
+      <span class="mono">Maximilian Zinke</span>
+    </div>
+    <div class="titleblock__rule" aria-hidden="true"></div>
+  </header>
+
+  <section class="lede">
+    <p class="lede__label mono">§ A — Note</p>
+    <p class="lede__text">
+      Peer-reviewed work,<br />newest first.
+    </p>
+  </section>
+
+  <PubGroup id="articles" label="§ B — Articles" title="Peer-reviewed.">
+    <Publication
+      group="B" index={1} year={2024}
+      title="Ton motor conformational switch and peptidoglycan role in bacterial nutrient uptake"
+      href="https://www.nature.com/articles/s41467-023-44606-z"
+      authors="<strong>Zinke, M.</strong>; Lejeune, M.; Mechaly, A.; Bardiaux, B.; Boneca, I. G.; Delepelaire, P.; Izadi-Pruneyre, N."
+      venue="Nature Communications"
+      volume="15(1), 331"
+      tag="First author"
+      tagAccent
+    />
+    <Publication
+      group="B" index={2} year={2022}
+      title="Major tail proteins of bacteriophages of the order Caudovirales"
+      authors="<strong>Zinke, M.</strong>; Schröder, G. F.; Lange, A."
+      venue="Journal of Biological Chemistry"
+      volume="298(1)"
+    />
+    <Publication
+      group="B" index={3} year={2020}
+      title="Architecture of the flexible tail tube of bacteriophage SPP1"
+      href="https://www.nature.com/articles/s41467-020-19611-1"
+      authors="<strong>Zinke, M.</strong>; Sachowsky, K. A. A.; Öster, C.; Zinn-Justin, S.; Ravelli, R.; Schröder, G. F.; Habeck, M.; Lange, A."
+      venue="Nature Communications"
+      volume="11(1), 5759"
+      tag="First author"
+      tagAccent
+    />
+    <Publication
+      group="B" index={4} year={2020}
+      title="Dynamic interactions of CbiN and CbiM trigger activity of a cobalt energy-coupling-factor transporter"
+      authors="Finkenwirth, F.; Sippach, M.; Pecina, S. N.; Gäde, M.; Ruta, J.; Ricke, A.; Bondarenko, E.; Klare, J. P.; <strong>Zinke, M.</strong>; Lange, S.; et al."
+      venue="Biochimica et Biophysica Acta (BBA) — Biomembranes"
+      volume="1862(2), 183114"
+    />
+    <Publication
+      group="B" index={5} year={2019}
+      title="Comparison of the 3D structures of mouse and human α-synuclein fibrils by solid-state NMR and STEM"
+      authors="Hwang, S.; Fricke, P.; <strong>Zinke, M.</strong>; Giller, K.; Wall, J. S.; Riedel, D.; Becker, S.; Lange, A."
+      venue="Journal of Structural Biology"
+      volume="206(1), 43–48"
+    />
+    <Publication
+      group="B" index={6} year={2018}
+      title="Protein–Protein Interfaces Probed by Methyl Labeling and Proton-Detected Solid-State NMR Spectroscopy"
+      authors="<strong>Zinke, M.</strong>; Fricke, P.; Lange, S.; Zinn-Justin, S.; Lange, A."
+      venue="ChemPhysChem"
+      volume="19(19), 2457–2460"
+      tag="First author"
+      tagAccent
+    />
+    <Publication
+      group="B" index={7} year={2018}
+      title="GC-MS determination of nitrous anhydrase activity of bovine and human carbonic anhydrase II and IV"
+      authors="Hanff, E.; <strong>Zinke, M.</strong>; Böhmer, A.; Niebuhr, J.; Maassen, M.; Endeward, V.; Maassen, N.; Tsikas, D."
+      venue="Analytical Biochemistry"
+      volume="550, 132–136"
+    />
+    <Publication
+      group="B" index={8} year={2017}
+      title="Bacteriophage Tail-Tube Assembly Studied by Proton-Detected 4D Solid-State NMR"
+      authors="<strong>Zinke, M.</strong>; Fricke, P.; Samson, C.; Hwang, S.; Wall, J. S.; Lange, S.; Zinn-Justin, S.; Lange, A."
+      venue="Angewandte Chemie International Edition"
+      volume="56(32), 9497–9501"
+      tag="First author"
+      tagAccent
+    />
+    <Publication
+      group="B" index={9} year={2017}
+      title="Emerin self-assembly mechanism: role of the LEM domain"
+      authors="Samson, C.; Celli, F.; Hendriks, K.; <strong>Zinke, M.</strong>; Essawy, N.; Herrada, I.; Arteni, A.-A.; Theillet, F.-X.; Alpha-Bazin, B.; Armengaud, J.; et al."
+      venue="The FEBS Journal"
+      volume="284(2), 338–352"
+    />
+    <Publication
+      group="B" index={10} year={2017}
+      title="Backbone assignment of perdeuterated proteins by solid-state NMR using proton detection and ultrafast magic-angle spinning"
+      authors="Fricke, P.; Chevelkov, V.; <strong>Zinke, M.</strong>; Giller, K.; Becker, S.; Lange, A."
+      venue="Nature Protocols"
+      volume="12(4), 764–782"
+    />
+    <Publication
+      group="B" index={11} year={2016}
+      title="Discovery and microassay of a nitrite-dependent carbonic anhydrase activity by stable-isotope dilution gas chromatography–mass spectrometry"
+      authors="<strong>Zinke, M.</strong>; Hanff, E.; Böhmer, A.; Supuran, C. T.; Tsikas, D."
+      venue="Amino Acids"
+      volume="48(1), 245–255"
+      tag="First author"
+      tagAccent
+    />
+    <Publication
+      group="B" index={12} year={2016}
+      title="Carbonic anhydrases are producers of S-nitrosothiols from inorganic nitrite and modulators of soluble guanylyl cyclase in human platelets"
+      authors="Hanff, E.; Böhmer, A.; <strong>Zinke, M.</strong>; Gambaryan, S.; Schwarz, A.; Supuran, C. T.; Tsikas, D."
+      venue="Amino Acids"
+      volume="48(7), 1695–1706"
+    />
+    <Publication
+      group="B" index={13} year={2016}
+      title="Temperature dependence of cross-effect dynamic nuclear polarization in rotating solids: advantages of elevated temperatures"
+      authors="Geiger, M.-A.; Orwick-Rydmark, M.; Märker, K.; Franks, W. T.; Akhmetzyanov, D.; Stöppler, D.; <strong>Zinke, M.</strong>; Specker, E.; Nazaré, M.; Diehl, A.; et al."
+      venue="Physical Chemistry Chemical Physics"
+      volume="18(44), 30696–30704"
+    />
+  </PubGroup>
+
+  <PubGroup id="reviews" label="§ C — Reviews" title="Reviews & opinion.">
+    <Publication
+      group="C" index={1} year={2024}
+      title="Bonds and bytes: The odyssey of structural biology"
+      authors="Hoff, S. E.; <strong>Zinke, M.</strong>; Izadi-Pruneyre, N.; Bonomi, M."
+      venue="Current Opinion in Structural Biology"
+      volume="84, 102746"
+    />
+  </PubGroup>
+
+  <PubGroup id="conf" label="§ D — Conferences" title="Proceedings & abstracts.">
+    <Publication
+      group="D" index={1} year={2024}
+      title="TonB raider: Discovering the secrets of the Ton system's order"
+      authors="<strong>Zinke, M. C.</strong>; Lejeune, M.; Mechaly, A.; Bardiaux, B.; Boneca, I. G.; Delepelaire, P.; Izadi-Pruneyre, N."
+      venue="Biophysical Journal"
+      volume="123(3), 52a"
+      tag="First author"
+      tagAccent
+    />
+    <Publication
+      group="D" index={2} year={2023}
+      title="Insights into the mechanism of the bacterial, periplasm-spanning transporter system 'Ton'"
+      authors="<strong>Zinke, M. C.</strong>; Lejeune, M.; Bardiaux, B.; Nilges, M.; Izadi-Pruneyre, N."
+      venue="Biophysical Journal"
+      volume="122(3), 308a"
+      tag="First author"
+      tagAccent
+    />
+  </PubGroup>
+
+  <PubGroup id="thesis" label="§ E — Thesis" title="Doctoral.">
+    <Publication
+      group="E" index={1} year={2021}
+      title="Investigation of the Tail Tube Protein Gp17.1 by Solid-state NMR"
+      authors="<strong>Zinke, M.</strong>"
+      venue="Humboldt-Universität zu Berlin"
+      tag="PhD thesis"
+    />
+  </PubGroup>
+
+  <footer class="colophon">
+    <div class="colophon__rule" aria-hidden="true"></div>
+    <p class="mono">
+      Maintained by hand. For the canonical, machine-readable list see
+      <a href="https://scholar.google.com/citations?user=YOUR_ID" rel="noopener">Google Scholar</a>
+      or <a href="https://orcid.org/YOUR-ORCID" rel="noopener">ORCID</a>.
+      ← <a href="/">Back to portfolio</a>.
+    </p>
+  </footer>
+
+</Document>

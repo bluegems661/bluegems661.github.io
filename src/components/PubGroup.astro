@@ -1,0 +1,49 @@
+---
+interface Props {
+  id: string;
+  label: string;     // e.g. "§ B — Articles"
+  title: string;     // e.g. "Peer-reviewed."
+}
+const { id, label, title } = Astro.props;
+---
+<section aria-labelledby={`${id}-heading`}>
+  <div class="group-head">
+    <span class="group-head__label mono">{label}</span>
+    <h2 id={`${id}-heading`} class="group-head__title">{title}</h2>
+  </div>
+
+  <ol class="pub-list" role="list">
+    <slot />
+  </ol>
+</section>
+
+<style>
+  .group-head {
+    display: grid;
+    grid-template-columns: var(--margin-col) 1fr;
+    column-gap: var(--gutter);
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-3);
+  }
+  .group-head__label {
+    grid-column: 1;
+    text-align: right;
+    font-size: var(--fs-xs);
+    color: var(--rust);
+    padding-top: 0.4rem;
+  }
+  .group-head__title {
+    grid-column: 2;
+    font-size: var(--fs-lg);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ink);
+    letter-spacing: var(--tracking-tight);
+  }
+  .pub-list { border-top: 1px solid var(--rule); }
+
+  @media (max-width: 50rem) {
+    .group-head { grid-template-columns: 1fr; }
+    .group-head__label { text-align: left; padding-top: 0; padding-bottom: var(--space-2); }
+  }
+</style>

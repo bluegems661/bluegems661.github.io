@@ -1,0 +1,129 @@
+---
+interface Props {
+  /** Group id (e.g. "B"), used to compose the entry number ("B.01"). */
+  group: string;
+  /** Index within the group, 1-based. Will be zero-padded. */
+  index: number;
+  year: number | string;
+  title: string;
+  /** Optional URL — wraps the title in an anchor when present. */
+  href?: string;
+  /** Author string. The site renders <strong> tags inside as the highlighted "me" name. */
+  authors: string;
+  /** Italicized journal name. */
+  venue: string;
+  /** Volume/issue/pages, plain text, no italics. */
+  volume?: string;
+  /** Optional tag(s) shown next to the title — e.g. "First author", "PhD thesis". */
+  tag?: string;
+  tagAccent?: boolean;
+}
+
+const { group, index, year, title, href, authors, venue, volume, tag, tagAccent } = Astro.props;
+const num = `${group}.${String(index).padStart(2, '0')}`;
+---
+<li class="pub">
+  <div class="pub__index">
+    <span class="pub__year">{year}</span>
+    <span class="pub__num mono">{num}</span>
+  </div>
+  <div class="pub__main">
+    <h3 class="pub__title">
+      {href
+        ? <a href={href} rel="noopener">{title}</a>
+        : title}
+      {tag && (
+        <span class={`pub__tag${tagAccent ? ' pub__tag--first' : ''}`}>{tag}</span>
+      )}
+    </h3>
+    <p class="pub__authors" set:html={authors} />
+    <p class="pub__venue">
+      <em>{venue}</em>{volume && <> · <span class="vol">{volume}</span></>}
+    </p>
+  </div>
+</li>
+
+<style>
+  .pub {
+    display: grid;
+    grid-template-columns: var(--margin-col) 1fr;
+    column-gap: var(--gutter);
+    padding: var(--space-5) 0;
+    border-bottom: 1px solid var(--rule-faint);
+  }
+  .pub:last-child { border-bottom: 0; }
+
+  .pub__index {
+    grid-column: 1;
+    text-align: right;
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    color: var(--ink-3);
+    letter-spacing: var(--tracking-mono);
+    font-variant-numeric: tabular-nums;
+    padding-top: 0.2rem;
+  }
+  .pub__year { color: var(--rust); display: block; }
+  .pub__num  { display: block; margin-top: 0.3rem; font-size: 11px; }
+
+  .pub__main { grid-column: 2; min-width: 0; }
+
+  .pub__title {
+    font-size: var(--fs-md);
+    font-weight: 400;
+    line-height: 1.3;
+    color: var(--ink);
+    text-wrap: pretty;
+    letter-spacing: var(--tracking-tight);
+  }
+  .pub__title a { color: inherit; text-decoration-color: var(--rule); }
+  .pub__title a:hover { text-decoration-color: var(--rust); }
+
+  .pub__authors {
+    margin-top: var(--space-2);
+    font-size: var(--fs-sm);
+    color: var(--ink-2);
+    line-height: 1.5;
+    text-wrap: pretty;
+  }
+  .pub__authors :global(strong) { color: var(--ink); font-weight: 500; }
+
+  .pub__venue {
+    margin-top: var(--space-2);
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    letter-spacing: var(--tracking-mono);
+    color: var(--ink-3);
+    font-variant-numeric: tabular-nums;
+  }
+  .pub__venue em {
+    font-style: italic;
+    color: var(--ink-2);
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    letter-spacing: 0;
+  }
+  .pub__venue .vol { color: var(--ink-2); }
+
+  .pub__tag {
+    display: inline-block;
+    margin-left: 0.5rem;
+    padding: 1px 6px;
+    border: 1px solid var(--rule);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    vertical-align: middle;
+    transform: translateY(-1px);
+  }
+  .pub__tag--first { color: var(--rust); border-color: var(--rust-mark); }
+
+  @media (max-width: 50rem) {
+    .pub { grid-template-columns: 1fr; }
+    .pub__index { text-align: left; padding-top: 0; padding-bottom: var(--space-2); }
+    .pub__year, .pub__num { display: inline; }
+    .pub__num { margin: 0 0 0 0.5rem; }
+  }
+</style>
