@@ -189,11 +189,19 @@ import Figure from "../components/Figure.astro";
       meta="live · real userbase · entirely different domain"
       href="https://isitabluegem.com"
     >
-      <div class="fig-grid" slot="default">
-        <img src="/figures/isit1.webp" alt="isitabluegem.com landing page — pattern tracker for CS2 case-hardened skins" width="1832" height="1031" loading="lazy" />
-        <img src="/figures/isit2.webp" alt="Pattern comparison — karambit case-hardened with side-by-side renders" width="1946" height="1095" loading="lazy" />
-        <img src="/figures/isit3.webp" alt="3D model viewer — interactive karambit blue gem inspection" width="2020" height="1136" loading="lazy" />
-        <img src="/figures/isit4.webp" alt="Blue gem marketplace — live listings with prices and filters" width="1356" height="762" loading="lazy" />
+      <div class="video-wrap" slot="default">
+        <video
+          class="ton-video"
+          poster="/figures/isit-poster.webp"
+          muted
+          playsinline
+          preload="none"
+          width="1920"
+          height="1080"
+        >
+          <source src="/figures/isit-clip.mp4" type="video/mp4" />
+        </video>
+        <span class="video-play mono" aria-hidden="true">▶ play</span>
       </div>
       <Fragment slot="body">
         <p>
