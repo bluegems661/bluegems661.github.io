@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://bluegems661.github.io',
+  site: 'https://maxzinke.com',
   trailingSlash: 'never',
   build: {
     inlineStylesheets: 'auto',
