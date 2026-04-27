@@ -1,101 +1,95 @@
 ---
-/*
- * Figure — work samples presented the way figures appear in a journal:
- * numbered, mono-captioned, with a short prose paragraph explaining what
- * it is and why it matters. Never a card, never shadowed.
- *
- * Slot layout:
- *   default slot → the visual (image, iframe, link, link-wrapped img…)
- *   "body" slot  → the prose paragraph(s)
- */
-
 interface Props {
   n: number | string;
   caption?: string;
-  meta?: string;   // e.g. "2024 · Blender · commissioned"
-  href?: string;   // optional: makes the whole figure clickable
+  meta?: string;
+  href?: string;
+  /** Short label that sits under "Fig. N" in the margin (e.g. "CRYSTALLINE", "2024"). Optional. */
+  kicker?: string;
 }
 
-const { n, caption, meta, href } = Astro.props;
-const WrapperTag = href ? "a" : "div";
-const hasVisual = Astro.slots.has("default");
+const { n, caption, meta, href, kicker } = Astro.props;
 ---
 <figure class="figure">
-  <WrapperTag
-    class:list={[
-      "figure__frame",
-      { "figure__frame--link": href, "figure__frame--placeholder": !hasVisual },
-    ]}
-    {...href ? { href, rel: "noopener" } : {}}
-  >
-    {hasVisual
-      ? <slot />
-      : <span class="figure__placeholder mono" aria-hidden="true">[ figure pending ]</span>
-    }
-  </WrapperTag>
+  <div class="figure__num">
+    <span class="mono">Fig.&nbsp;{n}</span>
+    {kicker && <small class="mono">{kicker}</small>}
+  </div>
 
-  <figcaption class="figure__caption">
-    <span class="figure__number">Fig. {n}</span>
-    <span class="figure__sep" aria-hidden="true">—</span>
-    <span class="figure__title">{Astro.slots.has("caption") ? <slot name="caption" /> : caption}</span>
-    {meta && <span class="figure__meta"> · {meta}</span>}
-  </figcaption>
+  <div class="figure__main">
+    <div class="figure__frame">
+      {href
+        ? <a href={href} rel="noopener" class="figure__link"><slot /></a>
+        : <slot />}
+    </div>
 
-  <div class="figure__body">
-    <slot name="body" />
+    {(caption || Astro.slots.has('caption') || meta) && (
+      <figcaption class="figure__caption mono">
+        {Astro.slots.has('caption')
+          ? <slot name="caption" />
+          : caption}
+        {meta && <span class="figure__meta"> · {meta}</span>}
+      </figcaption>
+    )}
+
+    {Astro.slots.has('body') && (
+      <div class="figure__body">
+        <slot name="body" />
+      </div>
+    )}
   </div>
 </figure>
 
 <style>
   .figure {
-    display: block;
+    display: grid;
+    grid-template-columns: var(--margin-col) 1fr;
+    column-gap: var(--gutter);
     margin: 0;
   }
 
-  .figure + :global(.figure) {
-    margin-top: var(--space-12);
+  .figure + .figure {
+    margin-top: var(--space-16);
+  }
+
+  .figure__num {
+    grid-column: 1;
+    text-align: right;
+    padding-top: 0.3rem;
+    font-size: var(--fs-xs);
+    color: var(--rust);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: var(--tracking-mono);
+  }
+
+  .figure__num small {
+    display: block;
+    font-size: 11px;
+    color: var(--ink-3);
+    margin-top: 0.4rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .figure__main {
+    grid-column: 2;
+    min-width: 0;
   }
 
   .figure__frame {
     display: block;
-    border-top: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
     color: inherit;
-    text-decoration: none;
     overflow: hidden;
   }
 
-  .figure__frame--placeholder {
-    min-height: 10rem;
-    padding: var(--space-12) 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background:
-      repeating-linear-gradient(
-        45deg,
-        transparent 0 14px,
-        var(--rule-faint) 14px 15px
-      );
+  .figure__link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 140ms linear;
   }
-
-  .figure__placeholder {
-    font-size: var(--fs-xs);
-    color: var(--ink-3);
-    background: var(--paper);
-    padding: var(--space-1) var(--space-3);
-    letter-spacing: var(--tracking-mono);
-  }
-
-  .figure__frame:not(.figure__frame--placeholder) {
-    transition: border-color 140ms linear;
-  }
-
-  .figure__frame:not(.figure__frame--placeholder):hover {
-    border-color: var(--pink);
-  }
-
-  .figure__frame--link:focus-visible {
+  .figure__link:hover { opacity: 0.85; }
+  .figure__link:focus-visible {
     outline: 2px solid var(--turquoise);
     outline-offset: 3px;
   }
@@ -103,31 +97,11 @@ const hasVisual = Astro.slots.has("default");
   .figure__caption {
     display: block;
     margin-top: var(--space-3);
-    font-family: var(--font-mono);
     font-size: var(--fs-xs);
     color: var(--ink-2);
-    letter-spacing: var(--tracking-mono);
     line-height: 1.5;
-    font-variant-numeric: tabular-nums;
   }
-
-  .figure__number {
-    color: var(--pink);
-    font-weight: 500;
-  }
-
-  .figure__sep {
-    margin: 0 0.4em;
-    color: var(--ink-3);
-  }
-
-  .figure__title {
-    color: var(--ink);
-  }
-
-  .figure__meta {
-    color: var(--ink-3);
-  }
+  .figure__meta { color: var(--ink-3); }
 
   .figure__body {
     margin-top: var(--space-4);
@@ -135,8 +109,21 @@ const hasVisual = Astro.slots.has("default");
     color: var(--ink-2);
     font-size: var(--fs-base);
   }
+  .figure__body :global(p + p) { margin-top: 0.7em; }
 
-  .figure__body :global(p + p) {
-    margin-top: 0.7em;
+  /* Narrow viewports: collapse to single column, number stacks above the figure. */
+  @media (max-width: 50rem) {
+    .figure {
+      grid-template-columns: 1fr;
+    }
+    .figure__num {
+      text-align: left;
+      padding-top: 0;
+      padding-bottom: var(--space-2);
+    }
+    .figure__num small {
+      display: inline;
+      margin: 0 0 0 0.6rem;
+    }
   }
 </style>

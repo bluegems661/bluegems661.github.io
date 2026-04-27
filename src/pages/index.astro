@@ -82,6 +82,7 @@ import Figure from "../components/Figure.astro";
 
     <Figure
       n="1"
+      kicker="2024"
       caption="Blender renders, EvolutionaryScale ESM3 landing page"
       meta="2024 · commissioned · Blender, Cycles"
       href="https://evolutionaryscale.ai"
@@ -104,6 +105,7 @@ import Figure from "../components/Figure.astro";
 
     <Figure
       n="2"
+      kicker="CRYSTALLINE"
       caption="CAUSTIC — backbone chemical shift prediction from protein structures"
       meta="CRYSTALLINE module · open source · live demo"
       href="https://huggingface.co/spaces/SiXa18/caustic"
@@ -130,8 +132,10 @@ import Figure from "../components/Figure.astro";
 
     <Figure
       n="3"
+      kicker="CRYSTALLINE"
       caption="FACET — per-residue backbone dihedrals (φ, ψ) and secondary structure from chemical shifts"
       meta="CRYSTALLINE module · open source · live demo"
+      href="https://huggingface.co/spaces/SiXa18/facet"
     >
       <div class="fig-grid fig-grid--stack" slot="default">
         <img src="/figures/facet-struct.webp" alt="FACET output — Ubiquitin (BMRB 6457), folded β-grasp topology" width="3000" height="874" loading="lazy" />
@@ -148,17 +152,24 @@ import Figure from "../components/Figure.astro";
           at residues 26–37 — the segment that locks in upon NCBD binding — cleanly resolved.
           Beats TALOS-N by 1.26° (median&nbsp;Δθ) in the high-confidence "Strong" tier on a
           55,036-residue, homology-separated test set.
-          Try&nbsp;it&nbsp;in&nbsp;your&nbsp;browser.
+          <a href="https://huggingface.co/spaces/SiXa18/facet" rel="noopener">Try&nbsp;it&nbsp;in&nbsp;your&nbsp;browser</a>.
         </p>
       </Fragment>
     </Figure>
 
     <Figure
       n="4"
+      kicker="2024"
       caption="Ton system mechanism — ExbD conformational switch"
       meta="2024 · Nat. Commun. · Blender, NMR"
     >
-      <div class="video-wrap">
+      <div
+        class="video-wrap"
+        role="button"
+        tabindex="0"
+        aria-label="Play video: Ton system mechanism animation"
+        aria-pressed="false"
+      >
         <video
           class="ton-video"
           poster="/figures/ton-poster.webp"
@@ -189,12 +200,20 @@ import Figure from "../components/Figure.astro";
 
     <Figure
       n="5"
+      kicker="LIVE"
       meta="live · real userbase · entirely different domain"
     >
       <Fragment slot="caption">
         <a href="https://isitabluegem.com" rel="noopener">isitabluegem.com</a> — CS2 case-hardened pattern finder
       </Fragment>
-      <div class="video-wrap" slot="default">
+      <div
+        class="video-wrap"
+        slot="default"
+        role="button"
+        tabindex="0"
+        aria-label="Play video: isitabluegem.com walkthrough"
+        aria-pressed="false"
+      >
         <video
           class="ton-video"
           poster="/figures/isit-poster.webp"
@@ -247,9 +266,7 @@ import Figure from "../components/Figure.astro";
   <footer class="colophon">
     <div class="colophon__rule" aria-hidden="true"></div>
     <p class="mono">
-      Set in Newsreader and JetBrains Mono.
-      Hand-built in Astro. Hosted statically.
-      © 2026 Max Zinke.
+      Set in Newsreader &amp; JetBrains Mono · Hand-built in Astro · Hosted statically · © 2026 Max Zinke
     </p>
   </footer>
 </Document>
@@ -257,17 +274,29 @@ import Figure from "../components/Figure.astro";
 <script>
   document.querySelectorAll<HTMLElement>('.video-wrap').forEach((wrap) => {
     const video = wrap.querySelector('video')!;
-    wrap.addEventListener('click', () => {
+
+    const toggle = () => {
       if (video.paused) {
         video.play();
         wrap.classList.add('is-playing');
+        wrap.setAttribute('aria-pressed', 'true');
       } else {
         video.pause();
         wrap.classList.remove('is-playing');
+        wrap.setAttribute('aria-pressed', 'false');
+      }
+    };
+
+    wrap.addEventListener('click', toggle);
+    wrap.addEventListener('keydown', (event) => {
+      if (event.key === ' ' || event.key === 'Enter') {
+        event.preventDefault();
+        toggle();
       }
     });
     video.addEventListener('ended', () => {
       wrap.classList.remove('is-playing');
+      wrap.setAttribute('aria-pressed', 'false');
       video.currentTime = 0;
       video.load();
     });
@@ -280,6 +309,11 @@ import Figure from "../components/Figure.astro";
   .video-wrap {
     position: relative;
     cursor: pointer;
+  }
+
+  .video-wrap:focus-visible {
+    outline: 2px solid var(--turquoise);
+    outline-offset: 3px;
   }
 
   .ton-video {
@@ -337,7 +371,7 @@ import Figure from "../components/Figure.astro";
 
   .lede__label {
     font-size: var(--fs-xs);
-    color: var(--pink);
+    color: var(--rust);
     margin-bottom: var(--space-4);
   }
 

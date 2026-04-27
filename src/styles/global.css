@@ -1,18 +1,4 @@
-/*
- * maxzinke.com — global styles
- *
- * Design direction lives in /.impeccable.md. Read it before editing this file.
- *
- * Mental model: an aged architectural plan or a page from a well-made lab
- * manual. Paper + ink + rare accent, type doing the heavy lifting, no cards,
- * no shadows, no decorative motion.
- *
- * FONT SELECTION IS PROVISIONAL. The brief says the font hunt is a separate
- * design task — Hanken Grotesk and JetBrains Mono are placeholders that
- * respect the ban list (no Inter, Space Grotesk, Plex, Instrument, etc.).
- * Revisit against the real brief once Pangram Pangram / Klim / Dinamo /
- * Future Fonts have been browsed.
- */
+/* maxzinke.com — global styles. Design direction in /.impeccable.md. */
 
 /* ---------- tokens ---------- */
 
@@ -26,16 +12,16 @@
   --rule:         oklch(34% 0.014 245);
   --rule-faint:   oklch(28% 0.012 245);
 
-  /* primary accent: rust (replaces pink as the link/mark color) */
-  --pink:         oklch(50% 0.15 40);   /* rust */
-  --pink-mark:    oklch(68% 0.14 40);
+  /* primary accent: rust — used for links, §-labels, figure numbers */
+  --rust:         oklch(50% 0.15 40);
+  --rust-mark:    oklch(68% 0.14 40);
 
-  /* secondary accent: turquoise stays for §-numbers, focus rings, selection */
+  /* secondary accent: turquoise — pillar numbers, focus rings, selection */
   --turquoise:    oklch(76% 0.12 205);
   --turq-mark:    oklch(60% 0.13 205);
 
-  /* type — Editorial pairing */
-  --font-sans:    "Newsreader", "Fraunces", Georgia, serif;
+  /* type — editorial pairing */
+  --font-serif:   "Newsreader", "Fraunces", Georgia, serif;
   --font-mono:    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
   /* tracking — looser for the serif display sizes */
@@ -83,7 +69,7 @@ html {
 
 body {
   margin: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font-serif);
   font-size: var(--fs-base);
   font-weight: 400;
   line-height: var(--lh-normal);
@@ -119,16 +105,16 @@ img, svg, video, canvas {
 }
 
 a {
-  color: var(--pink);
+  color: var(--rust);
   text-decoration-line: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
-  text-decoration-color: var(--pink-mark);
+  text-decoration-color: var(--rust-mark);
   transition: text-decoration-color 120ms linear;
 }
 
 a:hover {
-  text-decoration-color: var(--pink);
+  text-decoration-color: var(--rust);
 }
 
 a:focus-visible {
@@ -221,7 +207,7 @@ hr {
 }
 
 .rule--accent {
-  background: var(--pink-mark);
+  background: var(--rust-mark);
   height: 1px;
 }
 
@@ -278,7 +264,7 @@ hr {
 
 .section-head__label {
   font-size: var(--fs-xs);
-  color: var(--pink);
+  color: var(--rust);
   margin-bottom: var(--space-3);
 }
 
