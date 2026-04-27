@@ -1,0 +1,340 @@
+/*
+ * maxzinke.com — global styles
+ *
+ * Design direction lives in /.impeccable.md. Read it before editing this file.
+ *
+ * Mental model: an aged architectural plan or a page from a well-made lab
+ * manual. Paper + ink + rare accent, type doing the heavy lifting, no cards,
+ * no shadows, no decorative motion.
+ *
+ * FONT SELECTION IS PROVISIONAL. The brief says the font hunt is a separate
+ * design task — Hanken Grotesk and JetBrains Mono are placeholders that
+ * respect the ban list (no Inter, Space Grotesk, Plex, Instrument, etc.).
+ * Revisit against the real brief once Pangram Pangram / Klim / Dinamo /
+ * Future Fonts have been browsed.
+ */
+
+/* ---------- tokens ---------- */
+
+:root {
+  /* Paper + ink. Cream is a warm, slightly yellowed drafting paper;
+     ink is deep and very faintly cool, never pure black. */
+  --paper:        oklch(96.5% 0.018 88);
+  --paper-deeper: oklch(93.5% 0.022 88);
+  --ink:          oklch(22% 0.018 245);
+  --ink-2:        oklch(42% 0.016 245);  /* secondary body */
+  --ink-3:        oklch(50% 0.013 245);  /* metadata, quiet labels — still 4.5:1 on paper */
+  --rule:         oklch(80% 0.014 88);   /* hairline, drafted on paper */
+  --rule-faint:   oklch(88% 0.011 88);
+
+  /* Accents — the 10%. Pink is a faded riso marker; turquoise is aged
+     copperplate ink. Both tuned to clear WCAG AA (4.5:1) on --paper for
+     small text usage. If editing, verify in devtools against the exact
+     paper value — chroma at fixed L changes the luminance in non-obvious
+     ways, so do not trust eyeballing. */
+  --pink:         oklch(48% 0.19 15);
+  --pink-mark:    oklch(66% 0.17 15);    /* large marks / rules only — not text */
+  --turquoise:    oklch(45% 0.13 205);
+  --turq-mark:    oklch(66% 0.12 205);   /* large marks / rules only — not text */
+
+  /* Typography — provisional. Hanken Grotesk for body + headings,
+     JetBrains Mono for captions, figure labels, dates, metadata. */
+  --font-sans: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Modular scale, base 17px. Body sits comfortably wide. */
+  --fs-xs:   0.75rem;    /* 12.75px — fine mono metadata */
+  --fs-sm:   0.8125rem;  /* 13.8px  — captions */
+  --fs-base: 1rem;       /* 17px    — body */
+  --fs-md:   1.125rem;   /* 19px    — lead paragraph */
+  --fs-lg:   1.5rem;     /* 25.5px  — h3 */
+  --fs-xl:   2.25rem;    /* 38.25px — h2 */
+  --fs-2xl:  3.75rem;    /* 63.75px — hero / tagline */
+
+  --lh-tight:  1.12;
+  --lh-snug:   1.25;
+  --lh-normal: 1.55;
+
+  /* Layout — generous document width, with room for margin notes. */
+  --measure: 36rem;          /* primary column: ~612px */
+  --gutter:  2.5rem;
+  --margin-col: 11rem;       /* margin-note column on wide screens */
+
+  /* Spacing scale — 4px base. Every gap on the page should map to one of
+     these; ad-hoc values are drift. */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.25rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* Tracking — tight for hero, normal everywhere else. */
+  --tracking-tight:   -0.01em;
+  --tracking-tighter: -0.018em;   /* display sizes only */
+  --tracking-flat:    0;
+  --tracking-mono:    0.02em;
+}
+
+html {
+  font-size: 106.25%;  /* 17px assuming 16px default */
+  -webkit-text-size-adjust: 100%;
+  color-scheme: light;
+  background: var(--paper);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  font-weight: 400;
+  line-height: var(--lh-normal);
+  color: var(--ink);
+  background: var(--paper);
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---------- reset-ish ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6, p, figure, ol, ul, dl, dt, dd {
+  margin: 0;
+}
+
+ol, ul {
+  padding: 0;
+  list-style: none;
+}
+
+img, svg, video, canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--pink);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: var(--pink-mark);
+  transition: text-decoration-color 120ms linear;
+}
+
+a:hover {
+  text-decoration-color: var(--pink);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--turquoise);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+::selection {
+  background: var(--turq-mark);
+  color: var(--paper);
+}
+
+/* ---------- type ---------- */
+
+h1, h2, h3 {
+  font-weight: 500;
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-tight);
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--fs-2xl);
+  font-weight: 400;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tighter);
+}
+
+h2 {
+  font-size: var(--fs-xl);
+  font-weight: 500;
+}
+
+h3 {
+  font-size: var(--fs-lg);
+  font-weight: 500;
+}
+
+p {
+  max-width: var(--measure);
+  text-wrap: pretty;
+}
+
+p + p {
+  margin-top: 0.9em;
+  text-indent: 0;
+}
+
+strong {
+  font-weight: 600;
+}
+
+em {
+  font-style: italic;
+}
+
+code,
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  letter-spacing: var(--tracking-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: var(--space-10) 0;
+}
+
+/* ---------- layout helpers ---------- */
+
+.document {
+  max-width: calc(var(--measure) + var(--margin-col) + var(--gutter));
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 4rem) clamp(1.25rem, 4vw, 3rem);
+}
+
+.document > * + * {
+  margin-top: clamp(2rem, 4vw, 3.25rem);
+}
+
+.rule {
+  height: 1px;
+  background: var(--rule);
+  border: 0;
+  margin: 0;
+}
+
+.rule--accent {
+  background: var(--pink-mark);
+  height: 1px;
+}
+
+/* ---------- shared page furniture: titleblock, section head, colophon ---------- */
+
+.titleblock {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.titleblock__row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-4);
+}
+
+.titleblock__row--rule {
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--rule);
+}
+
+.titleblock__row--name {
+  padding-top: var(--space-5);
+}
+
+.titleblock__row--meta {
+  padding-top: var(--space-3);
+}
+
+.titleblock__label,
+.titleblock__row--meta .mono {
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+}
+
+.titleblock__name {
+  font-size: clamp(2.75rem, 7vw, 4.25rem);
+  font-weight: 400;
+  letter-spacing: var(--tracking-tighter);
+  line-height: var(--lh-tight);
+}
+
+.titleblock__rule {
+  height: 1px;
+  background: var(--rule);
+  margin-top: var(--space-5);
+}
+
+.section-head {
+  margin-bottom: var(--space-8);
+}
+
+.section-head__label {
+  font-size: var(--fs-xs);
+  color: var(--pink);
+  margin-bottom: var(--space-3);
+}
+
+.section-head__title {
+  /* Inherit size/weight from global h2; keep this hook for future overrides. */
+  letter-spacing: var(--tracking-tight);
+}
+
+.colophon {
+  padding-top: var(--space-4);
+}
+
+.colophon__rule {
+  height: 1px;
+  background: var(--rule);
+  margin-bottom: var(--space-4);
+}
+
+.colophon p {
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+  max-width: none;
+}
+
+/* ---------- skip link ---------- */
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-4);
+  padding: var(--space-2) var(--space-4);
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  text-decoration: none;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: var(--space-4);
+}
+
+/* ---------- reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

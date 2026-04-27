@@ -1,0 +1,430 @@
+---
+import Document from "../layouts/Document.astro";
+import Figure from "../components/Figure.astro";
+---
+<Document title="Max Zinke — NMR, scientific visualization, scientific software">
+
+  {/* Title block — the way an architectural drawing labels its sheet. */}
+  <header class="titleblock">
+    <div class="titleblock__row titleblock__row--rule">
+      <span class="titleblock__label mono">00 · Sheet</span>
+      <span class="titleblock__label mono">Rev. 2026</span>
+    </div>
+    <div class="titleblock__row titleblock__row--name">
+      <h1 class="titleblock__name">Max Zinke</h1>
+    </div>
+    <div class="titleblock__row titleblock__row--meta">
+      <span class="mono">Liestal, Switzerland</span>
+      <span class="mono">Scientist · Builder</span>
+    </div>
+    <div class="titleblock__rule" aria-hidden="true"></div>
+  </header>
+
+  {/* Document title — the tagline, treated as the thing this sheet is about. */}
+  <section class="lede">
+    <p class="lede__label mono">§ 00.1 — Thesis</p>
+    <p class="lede__text">
+      Making molecular <br />complexity accessible.
+    </p>
+  </section>
+
+  {/* Bio — one paragraph, quiet. */}
+  <section class="bio">
+    <p class="bio__label mono">§ 00.2 — About</p>
+    <p class="bio__body">
+      I am a scientist who loves to build things. PhD and postdoc in molecular biophysics with a strong focus on NMR spectroscopy
+      (Institut&nbsp;Pasteur, FMP&nbsp;Berlin); currently Scientist at
+      Bachem in Switzerland, working on quality control of peptide
+      therapeutics. On the side I make scientific visualizations in Blender,
+      build  small NMR tools, and occasionally stumble into web development/design.
+    </p>
+  </section>
+
+  {/* Three pillars — numbered sections like a document, not a grid of cards. */}
+  <section class="pillars" aria-labelledby="pillars-heading">
+    <div class="section-head">
+      <p class="section-head__label mono">§ 01 — What I do</p>
+      <h2 id="pillars-heading" class="section-head__title">Three pillars.</h2>
+    </div>
+
+    <ol class="pillars__list" role="list">
+      <li class="pillar">
+        <p class="pillar__no mono">01.1</p>
+        <h3 class="pillar__title">NMR Spectroscopy</h3>
+        <p class="pillar__body">
+          Biomolecular NMR. Method development,
+          probabilistic approaches to
+          spectral interpretation. Happiest at the intersection of classical
+          NMR and modern computation - especially if ML plays a role.
+        </p>
+      </li>
+
+      <li class="pillar">
+        <p class="pillar__no mono">01.2</p>
+        <h3 class="pillar__title">Scientific Visualization</h3>
+        <p class="pillar__body">
+          Blender for molecular structures — protein complexes, assemblies,
+          mechanisms. Renders that aim to make complex
+          concepts legible. Recent work appears on the
+          landing page of <a href="https://evolutionaryscale.ai" rel="noopener">EvolutionaryScale</a>.
+        </p>
+      </li>
+
+      <li class="pillar">
+        <p class="pillar__no mono">01.3</p>
+        <h3 class="pillar__title">Scientific Software &amp; Products</h3>
+        <p class="pillar__body">
+          Full-stack, end-to-end. Currently building ML-based tools for NMR data analysis.
+        </p>
+      </li>
+    </ol>
+  </section>
+
+  {/* Selected work — figures, not cards. Numbered, mono-captioned, prose bodies. */}
+  <section class="work" aria-labelledby="work-heading">
+    <div class="section-head">
+      <p class="section-head__label mono">§ 02 — Selected work</p>
+      <h2 id="work-heading" class="section-head__title">Figures.</h2>
+    </div>
+
+    <Figure
+      n="1"
+      caption="Blender renders, EvolutionaryScale ESM3 landing page"
+      meta="2024 · commissioned · Blender, Cycles"
+      href="https://evolutionaryscale.ai"
+    >
+      <div class="fig-grid" slot="default">
+        <img src="/figures/evo1.webp" alt="EvolutionaryScale landing page — ESM3 protein structure, space-filling model" width="2236" height="1258" loading="eager" />
+        <img src="/figures/evo2.webp" alt="EvolutionaryScale landing page — protein with surface and ribbon rendering" width="2232" height="1256" loading="eager" />
+        <img src="/figures/evo3.webp" alt="EvolutionaryScale landing page — antibody structure render" width="2227" height="1253" loading="lazy" />
+        <img src="/figures/evo4.webp" alt="EvolutionaryScale landing page — carbonic anhydrase with helices" width="2232" height="1256" loading="lazy" />
+      </div>
+      <Fragment slot="body">
+        <p>
+          These sit on the landing page of EvolutionaryScale, the lab behind
+          ESM3. The brief was to show protein-language-model-generated
+          structures as something investigable and beautiful, not as another
+          glowing molecule on a dark gradient. See for yourself.
+        </p>
+      </Fragment>
+    </Figure>
+
+    <Figure
+      n="2"
+      caption="CAUSTIC — backbone chemical shift prediction from protein structures"
+      meta="CRYSTALLINE module · open source · live demo"
+      href="https://huggingface.co/spaces/SiXa18/caustic"
+    >
+      <img
+        src="/figures/caustic-summary.webp"
+        alt="CAUSTIC vs SPARTA+ and UCBShiftR2: predicted HSQCs and correlation plots showing tighter predictions from CAUSTIC"
+        width="3600"
+        height="1800"
+        loading="lazy"
+      />
+      <Fragment slot="body">
+        <p>
+          A 400K-parameter SchNet graph neural network trained on 4,834
+          BMRB-linked experimental structures. Predicts all six backbone
+          nuclei (H, HA, N, CA, CB, C') from any PDB, mmCIF, or AlphaFold
+          structure — with calibrated uncertainties. Beats SPARTA+, LEGOLAS,
+          and UCBShift2 on a 712-protein homology-separated test set.
+          <a href="https://huggingface.co/spaces/SiXa18/caustic" rel="noopener">Try&nbsp;it&nbsp;in&nbsp;your&nbsp;browser</a>.
+        </p>
+      </Fragment>
+    </Figure>
+
+    <Figure
+      n="3"
+      caption="CRYSTALLINE — secondary structure from chemical shifts"
+      meta="in development · academic preview"
+    >
+      <Fragment slot="body">
+        <p>
+          Given assigned backbone chemical shifts, infer local dihedral
+          geometry and the secondary structure that follows. The probabilistic
+          framing is the interesting part — the outputs are distributions,
+          not point estimates.
+        </p>
+      </Fragment>
+    </Figure>
+
+    <Figure
+      n="4"
+      caption="Ton system mechanism — ExbD conformational switch"
+      meta="2024 · Nat. Commun. · Blender, NMR"
+    >
+      <div class="video-wrap">
+        <video
+          class="ton-video"
+          poster="/figures/ton-poster.webp"
+          muted
+          playsinline
+          preload="none"
+          width="1920"
+          height="1080"
+        >
+          <source src="/figures/ton-system.mp4" type="video/mp4" />
+        </video>
+        <span class="video-play mono" aria-hidden="true">▶ play</span>
+      </div>
+      <Fragment slot="body">
+        <p>
+          An animation of the mechanism I solved during my postdoc at
+          Institut&nbsp;Pasteur: the conformational switch of ExbD that drives
+          active nutrient uptake in Gram-negative bacteria, and the catalytic
+          role of the peptidoglycan layer. The Ton system harnesses the proton
+          motive force to open outer-membrane transporters — our work showed
+          that ExbD's periplasmic domain is a dynamic dimer switching between
+          open and closed states, and that this switch triggers a disorder-to-order
+          transition of TonB. First-author paper in
+          <a href="https://www.nature.com/articles/s41467-023-44606-z" rel="noopener">Nature&nbsp;Communications</a>.
+        </p>
+      </Fragment>
+    </Figure>
+
+    <Figure
+      n="5"
+      caption="isitabluegem.com — CS2 case-hardened pattern finder"
+      meta="live · real userbase · entirely different domain"
+      href="https://isitabluegem.com"
+    >
+      <div class="fig-grid" slot="default">
+        <img src="/figures/isit1.webp" alt="isitabluegem.com landing page — pattern tracker for CS2 case-hardened skins" width="1832" height="1031" loading="lazy" />
+        <img src="/figures/isit2.webp" alt="Pattern comparison — karambit case-hardened with side-by-side renders" width="1946" height="1095" loading="lazy" />
+        <img src="/figures/isit3.webp" alt="3D model viewer — interactive karambit blue gem inspection" width="2020" height="1136" loading="lazy" />
+        <img src="/figures/isit4.webp" alt="Blue gem marketplace — live listings with prices and filters" width="1356" height="762" loading="lazy" />
+      </div>
+      <Fragment slot="body">
+        <p>
+          A live, shipped product in a completely unrelated field:
+          Counter-Strike&nbsp;2 case-hardened skin patterns, reverse-engineered,
+          rendered, and searched at scale. It is on this page for one
+          reason — it is proof I build end-to-end products that real people
+          use.
+        </p>
+      </Fragment>
+    </Figure>
+  </section>
+
+  {/* Contact — plain list, no form, no CTA. */}
+  <section class="contact" aria-labelledby="contact-heading">
+    <div class="section-head">
+      <p class="section-head__label mono">§ 03 — Contact</p>
+      <h2 id="contact-heading" class="section-head__title">Reach me.</h2>
+    </div>
+
+    <dl class="contact__list" role="list">
+      <div class="contact__row">
+        <dt class="mono">email</dt>
+        <dd><a href="mailto:hello@maxzinke.com">hello@maxzinke.com</a></dd>
+      </div>
+      <div class="contact__row">
+        <dt class="mono">linkedin</dt>
+        <dd><a href="https://www.linkedin.com/in/maxzinke/" rel="me noopener">linkedin.com/in/maxzinke</a></dd>
+      </div>
+      <div class="contact__row">
+        <dt class="mono">github</dt>
+        <dd><a href="https://github.com/maxzinke" rel="me noopener">github.com/maxzinke</a></dd>
+      </div>
+    </dl>
+  </section>
+
+  {/* Footer — colophon, not a marketing footer. */}
+  <footer class="colophon">
+    <div class="colophon__rule" aria-hidden="true"></div>
+    <p class="mono">
+      Set in Hanken Grotesk and JetBrains Mono.
+      Hand-built in Astro. Hosted statically.
+      © 2026 Max Zinke.
+    </p>
+  </footer>
+</Document>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.video-wrap').forEach((wrap) => {
+    const video = wrap.querySelector('video')!;
+    wrap.addEventListener('click', () => {
+      if (video.paused) {
+        video.play();
+        wrap.classList.add('is-playing');
+      } else {
+        video.pause();
+        wrap.classList.remove('is-playing');
+      }
+    });
+    video.addEventListener('ended', () => {
+      wrap.classList.remove('is-playing');
+      video.currentTime = 0;
+      video.load();
+    });
+  });
+</script>
+
+<style>
+  /* ---------- video click-to-play ---------- */
+
+  .video-wrap {
+    position: relative;
+    cursor: pointer;
+  }
+
+  .ton-video {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .video-play {
+    position: absolute;
+    bottom: var(--space-4);
+    right: var(--space-4);
+    font-size: var(--fs-xs);
+    color: var(--paper);
+    background: oklch(22% 0.018 245 / 0.65);
+    padding: var(--space-1) var(--space-3);
+    pointer-events: none;
+    transition: opacity 200ms ease-out;
+  }
+
+  .video-wrap.is-playing .video-play {
+    opacity: 0;
+  }
+
+  /* ---------- figure screenshot grids ---------- */
+
+  .fig-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .fig-grid img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  @media (max-width: 30rem) {
+    .fig-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ---------- lede / tagline ---------- */
+
+  .lede {
+    padding-top: var(--space-2);
+  }
+
+  .lede__label {
+    font-size: var(--fs-xs);
+    color: var(--pink);
+    margin-bottom: var(--space-4);
+  }
+
+  .lede__text {
+    font-size: clamp(2.5rem, 6.5vw, 4rem);
+    line-height: 1.05;
+    font-weight: 400;
+    letter-spacing: var(--tracking-tighter);
+    color: var(--ink);
+    max-width: none;
+  }
+
+  /* ---------- bio ---------- */
+
+  .bio__label {
+    font-size: var(--fs-xs);
+    color: var(--ink-3);
+    margin-bottom: var(--space-3);
+  }
+
+  .bio__body {
+    font-size: var(--fs-md);
+    color: var(--ink);
+  }
+
+  /* ---------- pillars ---------- */
+
+  .pillars__list {
+    display: grid;
+    gap: var(--space-8);
+  }
+
+  .pillar {
+    display: grid;
+    grid-template-columns: 4.5rem 1fr;
+    gap: 0 var(--space-5);
+    align-items: baseline;
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--rule);
+  }
+
+  .pillar__no {
+    font-size: var(--fs-xs);
+    color: var(--turquoise);
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .pillar__title {
+    grid-column: 2;
+    grid-row: 1;
+    font-size: var(--fs-lg);
+    font-weight: 500;
+  }
+
+  .pillar__body {
+    grid-column: 2;
+    grid-row: 2;
+    margin-top: var(--space-2);
+    color: var(--ink-2);
+  }
+
+  @media (max-width: 30rem) {
+    .pillar {
+      grid-template-columns: 1fr;
+      gap: var(--space-1) 0;
+    }
+    .pillar__no,
+    .pillar__title,
+    .pillar__body {
+      grid-column: 1;
+    }
+    .pillar__no   { grid-row: 1; }
+    .pillar__title { grid-row: 2; }
+    .pillar__body  { grid-row: 3; }
+  }
+
+  /* ---------- contact ---------- */
+
+  .contact__list {
+    display: grid;
+    gap: var(--space-3);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--rule);
+  }
+
+  .contact__row {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr;
+    align-items: baseline;
+    gap: 0 var(--space-4);
+  }
+
+  .contact__row dt {
+    font-size: var(--fs-xs);
+    color: var(--ink-3);
+  }
+
+  .contact__row dd {
+    margin: 0;
+  }
+
+  @media (max-width: 30rem) {
+    .contact__row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

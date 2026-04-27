@@ -1,0 +1,50 @@
+---
+import Document from "../../layouts/Document.astro";
+---
+<Document
+  title="Log — Max Zinke"
+  description="Short notes on what I'm building: CRYSTALLINE, NMR tooling, scientific visualization."
+  pathname="/log"
+>
+  <header class="titleblock">
+    <div class="titleblock__row titleblock__row--rule">
+      <span class="titleblock__label mono">01 · Sheet</span>
+      <span class="titleblock__label mono">Rev. 2026</span>
+    </div>
+    <div class="titleblock__row titleblock__row--name">
+      <h1 class="titleblock__name">Log</h1>
+    </div>
+    <div class="titleblock__row titleblock__row--meta">
+      <span class="mono"><a href="/">← maxzinke.com</a></span>
+      <span class="mono">Notes on what I'm building</span>
+    </div>
+    <div class="titleblock__rule" aria-hidden="true"></div>
+  </header>
+
+  <section class="empty">
+    <p class="empty__label mono">§ 00 — Status</p>
+    <p class="empty__body">
+      Nothing published yet. The first entries will cover CRYSTALLINE's
+      chemical-shift-prediction module, a few notes on rendering proteins in
+      Blender without making them look like glowing candy, and whatever
+      experiments accumulate on the way. Check back, or email me.
+    </p>
+  </section>
+
+  <footer class="colophon">
+    <div class="colophon__rule" aria-hidden="true"></div>
+    <p class="mono">© 2026 Max Zinke.</p>
+  </footer>
+</Document>
+
+<style>
+  .empty__label {
+    font-size: var(--fs-xs);
+    color: var(--pink);
+    margin-bottom: var(--space-3);
+  }
+
+  .empty__body {
+    font-size: var(--fs-md);
+  }
+</style>
