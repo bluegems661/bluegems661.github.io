@@ -1,0 +1,631 @@
+---
+import Document from "../layouts/Document.astro";
+---
+<Document
+  title="Curriculum Vitae — Max Zinke"
+  description="Curriculum Vitae of Maximilian Zinke — NMR spectroscopy, structural biology, scientific software."
+  pathname="/cv/"
+>
+
+  <header class="titleblock">
+    <div class="titleblock__row titleblock__row--rule">
+      <span class="titleblock__label mono">03 · Sheet · Curriculum Vitae</span>
+      <span class="titleblock__label mono"><a href="/">← Portfolio</a></span>
+    </div>
+    <div class="titleblock__row titleblock__row--name">
+      <h1 class="titleblock__name">Curriculum Vitae</h1>
+    </div>
+    <div class="titleblock__row titleblock__row--meta">
+      <span class="mono">Maximilian Zinke · Dr. rer. nat.</span>
+      <span class="mono">Liestal, Switzerland · <a href="mailto:maximilian.zinke@gmail.com">maximilian.zinke@gmail.com</a></span>
+    </div>
+    <div class="titleblock__rule" aria-hidden="true"></div>
+  </header>
+
+  <section class="lede">
+    <p class="lede__label mono">§ A — Note</p>
+    <p class="lede__text">
+      A scientist who builds&nbsp;things.
+    </p>
+    <div class="cv-actions no-print">
+      <button type="button" class="cv-print mono" id="cv-print-btn">
+        Print / save as PDF →
+      </button>
+    </div>
+  </section>
+
+  {/* ---------- Education ---------- */}
+  <section class="cv-group" aria-labelledby="education-heading">
+    <div class="group-head">
+      <span class="group-head__label mono">§ B — Education</span>
+      <h2 id="education-heading" class="group-head__title">Academic record.</h2>
+    </div>
+
+    <ol class="cv-list" role="list">
+      <li class="cv-row">
+        <div class="cv-row__date mono">since Oct 2024</div>
+        <div class="cv-row__main">
+          <h3 class="cv-row__title">Scientist, Quality Control Early Phase</h3>
+          <p class="cv-row__sub">Peptide Aggregation and NMR Spectroscopy group</p>
+          <p class="cv-row__org mono">Bachem AG · Bubendorf, Switzerland</p>
+        </div>
+      </li>
+      <li class="cv-row">
+        <div class="cv-row__date mono">Apr 2021 — Sep 2024</div>
+        <div class="cv-row__main">
+          <h3 class="cv-row__title">Postdoctoral Researcher</h3>
+          <p class="cv-row__sub">
+            Department of Structural Biology and Chemistry. Structure and dynamics of
+            biomolecules by solution NMR and cryo-EM. Supervisor: Dr. Nadia Izadi-Pruneyre.
+          </p>
+          <p class="cv-row__org mono">Institut Pasteur · Paris, France</p>
+        </div>
+      </li>
+      <li class="cv-row">
+        <div class="cv-row__date mono">Jan 2016 — Apr 2021</div>
+        <div class="cv-row__main">
+          <h3 class="cv-row__title">PhD, Molecular Biophysics</h3>
+          <p class="cv-row__sub">
+            Solid-state NMR spectroscopy. Supervisor: Prof. Dr. Adam Lange.
+            <em>Summa cum laude.</em>
+          </p>
+          <p class="cv-row__org mono">Leibniz-Forschungsinstitut für Molekulare Pharmakologie · Berlin</p>
+        </div>
+      </li>
+      <li class="cv-row">
+        <div class="cv-row__date mono">Oct 2013 — Sep 2015</div>
+        <div class="cv-row__main">
+          <h3 class="cv-row__title">M.Sc., Biochemistry</h3>
+          <p class="cv-row__org mono">Free University of Berlin</p>
+        </div>
+      </li>
+      <li class="cv-row">
+        <div class="cv-row__date mono">Oct 2010 — Dec 2013</div>
+        <div class="cv-row__main">
+          <h3 class="cv-row__title">B.Sc., Biochemistry</h3>
+          <p class="cv-row__org mono">Leibniz University Hannover</p>
+        </div>
+      </li>
+      <li class="cv-row">
+        <div class="cv-row__date mono">1997 — 2010</div>
+        <div class="cv-row__main">
+          <h3 class="cv-row__title">Abitur</h3>
+          <p class="cv-row__org mono">Gymnasium Otterndorf</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  {/* ---------- Theses ---------- */}
+  <section class="cv-group" aria-labelledby="theses-heading">
+    <div class="group-head">
+      <span class="group-head__label mono">§ C — Theses</span>
+      <h2 id="theses-heading" class="group-head__title">Written.</h2>
+    </div>
+
+    <ol class="cv-list" role="list">
+      <li class="cv-row">
+        <div class="cv-row__date mono">2021 · PhD<br /><span class="cv-row__grade">summa cum laude</span></div>
+        <div class="cv-row__main">
+          <h3 class="cv-row__title">Investigation of the Tail Tube Protein gp17.1 by Solid-State NMR</h3>
+          <p class="cv-row__sub">Supervisor: Prof. Dr. Adam Lange.</p>
+          <p class="cv-row__org mono">Humboldt University of Berlin</p>
+        </div>
+      </li>
+      <li class="cv-row">
+        <div class="cv-row__date mono">2015 · M.Sc.<br /><span class="cv-row__grade">very good · 1.0</span></div>
+        <div class="cv-row__main">
+          <h3 class="cv-row__title">Characterization of the Tail Tube Protein gp17.1 by Solid-State NMR</h3>
+          <p class="cv-row__sub">Supervisor: Prof. Dr. Adam Lange.</p>
+          <p class="cv-row__org mono">Humboldt University of Berlin</p>
+        </div>
+      </li>
+      <li class="cv-row">
+        <div class="cv-row__date mono">2013 · B.Sc.<br /><span class="cv-row__grade">very good · 1.2</span></div>
+        <div class="cv-row__main">
+          <h3 class="cv-row__title">Nitrite-dependent Carbonic Anhydrase Activity by GC/MS</h3>
+          <p class="cv-row__sub">Supervisor: Prof. Dr. Dimitrios Tsikas.</p>
+          <p class="cv-row__org mono">Hannover Medical School</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  {/* ---------- Awards & Fellowships ---------- */}
+  <section class="cv-group" aria-labelledby="awards-heading">
+    <div class="group-head">
+      <span class="group-head__label mono">§ D — Awards &amp; Fellowships</span>
+      <h2 id="awards-heading" class="group-head__title">Selected.</h2>
+    </div>
+
+    <ol class="cv-list" role="list">
+      <li class="cv-row">
+        <div class="cv-row__date mono">Apr 2024 — Sep 2024</div>
+        <div class="cv-row__main">
+          <h3 class="cv-row__title">Pasteur-Roux-Cantarini Fellowship</h3>
+          <p class="cv-row__org mono">Institut Pasteur</p>
+        </div>
+      </li>
+      <li class="cv-row">
+        <div class="cv-row__date mono">May 2024</div>
+        <div class="cv-row__main">
+          <h3 class="cv-row__title">Best Talk Prize · AILM 2024</h3>
+          <p class="cv-row__org mono">Institut de Biologie Structurale · Grenoble</p>
+        </div>
+      </li>
+      <li class="cv-row">
+        <div class="cv-row__date mono">Oct 2023</div>
+        <div class="cv-row__main">
+          <h3 class="cv-row__title">Best Talk Prize · Departmental Retreat</h3>
+          <p class="cv-row__org mono">Department of Structural Biology and Chemistry · Institut Pasteur</p>
+        </div>
+      </li>
+      <li class="cv-row">
+        <div class="cv-row__date mono">Apr 2023</div>
+        <div class="cv-row__main">
+          <h3 class="cv-row__title">Best Talk Prize · Departmental Retreat</h3>
+          <p class="cv-row__org mono">Department of Microbiology · Institut Pasteur</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  {/* ---------- Training ---------- */}
+  <section class="cv-group" aria-labelledby="training-heading">
+    <div class="group-head">
+      <span class="group-head__label mono">§ E — Training</span>
+      <h2 id="training-heading" class="group-head__title">Courses &amp; workshops.</h2>
+    </div>
+
+    <ol class="cv-list" role="list">
+      <li class="cv-row">
+        <div class="cv-row__date mono">Jun 2022</div>
+        <div class="cv-row__main">
+          <h3 class="cv-row__title">Pasteur Course: Single Particle Imaging</h3>
+          <p class="cv-row__sub">Cryo-EM data processing, reconstruction and structure calculation. With Carlos Oscar S. Sorzano.</p>
+          <p class="cv-row__org mono">Institut Pasteur · Paris</p>
+        </div>
+      </li>
+      <li class="cv-row">
+        <div class="cv-row__date mono">Sep 2021</div>
+        <div class="cv-row__main">
+          <h3 class="cv-row__title">Workshop: Cryogenic Electron Microscopy</h3>
+          <p class="cv-row__sub">Freezing of grids, alignment of the microscope, setup of data collection.</p>
+          <p class="cv-row__org mono">Institut Pasteur · Paris</p>
+        </div>
+      </li>
+      <li class="cv-row">
+        <div class="cv-row__date mono">Aug 2019</div>
+        <div class="cv-row__main">
+          <h3 class="cv-row__title">EUROISMAR 2019 · Helper at scientific conference</h3>
+          <p class="cv-row__org mono">Free University Berlin</p>
+        </div>
+      </li>
+      <li class="cv-row">
+        <div class="cv-row__date mono">Jul 2019</div>
+        <div class="cv-row__main">
+          <h3 class="cv-row__title">EMBO Practical Course</h3>
+          <p class="cv-row__sub">Integrative and cellular structural biology.</p>
+          <p class="cv-row__org mono">Institut Pasteur · Paris</p>
+        </div>
+      </li>
+      <li class="cv-row">
+        <div class="cv-row__date mono">Oct 2016</div>
+        <div class="cv-row__main">
+          <h3 class="cv-row__title">Ampere Biological Solid-State NMR School</h3>
+          <p class="cv-row__sub">Theory and advanced methods in solid-state NMR.</p>
+          <p class="cv-row__org mono">Universitat de les Illes Balears · Spain</p>
+        </div>
+      </li>
+      <li class="cv-row">
+        <div class="cv-row__date mono">Sep 2015</div>
+        <div class="cv-row__main">
+          <h3 class="cv-row__title">Solid-State NMR Summer School</h3>
+          <p class="cv-row__sub">Solid-state NMR for liquid-state NMR spectroscopists.</p>
+          <p class="cv-row__org mono">Johannes Kepler University Linz · Austria</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  {/* ---------- Teaching ---------- */}
+  <section class="cv-group" aria-labelledby="teaching-heading">
+    <div class="group-head">
+      <span class="group-head__label mono">§ F — Teaching</span>
+      <h2 id="teaching-heading" class="group-head__title">Mentoring &amp; supervision.</h2>
+    </div>
+
+    <ol class="cv-list" role="list">
+      <li class="cv-row">
+        <div class="cv-row__date mono">2016 — 2020</div>
+        <div class="cv-row__main">
+          <h3 class="cv-row__title">Bachelor student mentoring</h3>
+          <p class="cv-row__sub">Supervised two students for six months each.</p>
+          <p class="cv-row__org mono">Humboldt University of Berlin</p>
+        </div>
+      </li>
+      <li class="cv-row">
+        <div class="cv-row__date mono">2016 — 2020<br /><span class="cv-row__grade">256 h</span></div>
+        <div class="cv-row__main">
+          <h3 class="cv-row__title">NMR practical course supervision</h3>
+          <p class="cv-row__org mono">Humboldt University of Berlin</p>
+        </div>
+      </li>
+      <li class="cv-row">
+        <div class="cv-row__date mono">2012<br /><span class="cv-row__grade">26 h</span></div>
+        <div class="cv-row__main">
+          <h3 class="cv-row__title">Physical chemistry seminar leader</h3>
+          <p class="cv-row__org mono">Leibniz University Hannover</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  {/* ---------- Languages ---------- */}
+  <section class="cv-group" aria-labelledby="languages-heading">
+    <div class="group-head">
+      <span class="group-head__label mono">§ G — Languages</span>
+      <h2 id="languages-heading" class="group-head__title">Spoken.</h2>
+    </div>
+
+    <ol class="cv-list" role="list">
+      <li class="cv-row">
+        <div class="cv-row__date mono">—</div>
+        <div class="cv-row__main">
+          <p class="cv-row__sub cv-row__sub--lead">
+            <strong>German</strong> (native) ·
+            <strong>English</strong> (business fluent) ·
+            <strong>French</strong> (intermediate)
+          </p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  {/* ---------- Talks ---------- */}
+  <section class="cv-group" aria-labelledby="talks-heading">
+    <div class="group-head">
+      <span class="group-head__label mono">§ H — Selected Talks</span>
+      <h2 id="talks-heading" class="group-head__title">Conferences.</h2>
+    </div>
+
+    <ol class="cv-list" role="list">
+      <li class="cv-row">
+        <div class="cv-row__date mono">May 2024<br /><span class="cv-row__grade">selected</span></div>
+        <div class="cv-row__main">
+          <h3 class="cv-row__title">TonB raider: Discovering the secrets of the Ton system's order</h3>
+          <p class="cv-row__org mono">AILM 2024 · Grenoble, France</p>
+        </div>
+      </li>
+      <li class="cv-row">
+        <div class="cv-row__date mono">Feb 2024<br /><span class="cv-row__grade">selected</span></div>
+        <div class="cv-row__main">
+          <h3 class="cv-row__title">TonB raider: Discovering the secrets of the Ton system's order</h3>
+          <p class="cv-row__org mono">Biophysical Society Meeting 2024 · Philadelphia, USA</p>
+        </div>
+      </li>
+      <li class="cv-row">
+        <div class="cv-row__date mono">Feb 2023<br /><span class="cv-row__grade">selected</span></div>
+        <div class="cv-row__main">
+          <h3 class="cv-row__title">Insights into the mechanism of the bacterial, periplasm-spanning transporter system "Ton"</h3>
+          <p class="cv-row__org mono">Biophysical Society Meeting 2023 · San Diego, USA</p>
+        </div>
+      </li>
+      <li class="cv-row">
+        <div class="cv-row__date mono">Sep 2022<br /><span class="cv-row__grade">selected</span></div>
+        <div class="cv-row__main">
+          <h3 class="cv-row__title">Conformational selection of a sparsely populated state upon binding of an intrinsically disordered region between two components of the Ton system</h3>
+          <p class="cv-row__org mono">AILM 2022 · Grenoble, France</p>
+        </div>
+      </li>
+      <li class="cv-row">
+        <div class="cv-row__date mono">Nov 2018<br /><span class="cv-row__grade">invited</span></div>
+        <div class="cv-row__main">
+          <h3 class="cv-row__title">Analysis of a Bacteriophage Tail-Tube Assembly by Proton-Detected Solid-State NMR: Combination of 4D Assignment Experiments and Methyl Labeling</h3>
+          <p class="cv-row__org mono">Humboldt Kolleg · Rio de Janeiro, Brazil</p>
+        </div>
+      </li>
+      <li class="cv-row">
+        <div class="cv-row__date mono">Jul 2018<br /><span class="cv-row__grade">selected</span></div>
+        <div class="cv-row__main">
+          <h3 class="cv-row__title">Analysis of a Bacteriophage Tail-Tube Assembly by Proton-Detected Solid-State NMR</h3>
+          <p class="cv-row__org mono">23rd Rocky Mountain Conference · Snowbird, Utah, USA</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  {/* ---------- Publications (linkout) ---------- */}
+  <section class="cv-group" aria-labelledby="publications-heading">
+    <div class="group-head">
+      <span class="group-head__label mono">§ I — Publications</span>
+      <h2 id="publications-heading" class="group-head__title">Selected peer-reviewed.</h2>
+    </div>
+
+    <div class="pub-summary">
+      <p class="cv-row__date mono">17 entries · 2016 — 2024</p>
+      <p class="cv-row__sub">
+        Full bibliography on the <a href="/publications/">publications page</a> —
+        first-author papers in <em>Nature Communications</em>, <em>Angewandte Chemie</em>,
+        <em>Journal of Biological Chemistry</em>, and others. Live citation
+        metrics on <a href="https://scholar.google.com/citations?user=S3YIsh8AAAAJ&amp;hl=de" rel="noopener">Google Scholar</a>.
+      </p>
+    </div>
+  </section>
+
+  <footer class="colophon">
+    <div class="colophon__rule" aria-hidden="true"></div>
+    <p class="mono">
+      Maintained by hand. Last updated 2026-04. ← <a href="/">Back to portfolio</a>.
+    </p>
+  </footer>
+
+</Document>
+
+<script>
+  document.getElementById('cv-print-btn')?.addEventListener('click', () => {
+    window.print();
+  });
+</script>
+
+<style>
+  /* ---------- print action ---------- */
+
+  .cv-actions {
+    margin-top: var(--space-5);
+  }
+
+  .cv-print {
+    appearance: none;
+    background: transparent;
+    color: var(--rust);
+    border: 1px solid var(--rule);
+    padding: var(--space-2) var(--space-4);
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    letter-spacing: var(--tracking-mono);
+    cursor: pointer;
+    transition: border-color 120ms linear, color 120ms linear;
+  }
+
+  .cv-print:hover {
+    border-color: var(--rust-mark);
+    color: var(--rust-mark);
+  }
+
+  .cv-print:focus-visible {
+    outline: 2px solid var(--turquoise);
+    outline-offset: 3px;
+  }
+
+  /* ---------- group head (mirrors PubGroup) ---------- */
+
+  .group-head {
+    display: grid;
+    grid-template-columns: var(--margin-col) 1fr;
+    column-gap: var(--gutter);
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-3);
+  }
+  .group-head__label {
+    grid-column: 1;
+    text-align: right;
+    font-size: var(--fs-xs);
+    color: var(--rust);
+    padding-top: 0.4rem;
+  }
+  .group-head__title {
+    grid-column: 2;
+    font-size: var(--fs-lg);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ink);
+    letter-spacing: var(--tracking-tight);
+  }
+
+  .cv-list {
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ---------- CV row (mirrors .pub) ---------- */
+
+  .cv-row {
+    display: grid;
+    grid-template-columns: var(--margin-col) 1fr;
+    column-gap: var(--gutter);
+    padding: var(--space-5) 0;
+    border-bottom: 1px solid var(--rule-faint);
+  }
+
+  .cv-row:last-child {
+    border-bottom: 0;
+  }
+
+  .cv-row__date {
+    grid-column: 1;
+    text-align: right;
+    font-size: var(--fs-xs);
+    color: var(--rust);
+    letter-spacing: var(--tracking-mono);
+    font-variant-numeric: tabular-nums;
+    padding-top: 0.2rem;
+  }
+
+  .cv-row__grade {
+    color: var(--ink-3);
+    font-size: 11px;
+  }
+
+  .cv-row__main {
+    grid-column: 2;
+    min-width: 0;
+  }
+
+  .cv-row__title {
+    font-size: var(--fs-md);
+    font-weight: 400;
+    line-height: 1.3;
+    color: var(--ink);
+    text-wrap: pretty;
+    letter-spacing: var(--tracking-tight);
+  }
+
+  .cv-row__sub {
+    margin-top: var(--space-2);
+    font-size: var(--fs-sm);
+    color: var(--ink-2);
+    line-height: 1.5;
+    text-wrap: pretty;
+    max-width: var(--measure);
+  }
+
+  .cv-row__sub--lead {
+    font-size: var(--fs-md);
+    color: var(--ink);
+  }
+
+  .cv-row__sub :global(strong) {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .cv-row__org {
+    margin-top: var(--space-2);
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    letter-spacing: var(--tracking-mono);
+    color: var(--ink-3);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- publications summary block ---------- */
+
+  .pub-summary {
+    display: grid;
+    grid-template-columns: var(--margin-col) 1fr;
+    column-gap: var(--gutter);
+    padding: var(--space-5) 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .pub-summary .cv-row__date {
+    line-height: 1.5;
+  }
+
+  /* ---------- mobile ---------- */
+
+  @media (max-width: 50rem) {
+    .group-head,
+    .cv-row,
+    .pub-summary {
+      grid-template-columns: 1fr;
+    }
+    .group-head__label,
+    .cv-row__date {
+      text-align: left;
+      padding-top: 0;
+      padding-bottom: var(--space-2);
+    }
+    .cv-row__date br {
+      display: none;
+    }
+    .cv-row__date .cv-row__grade {
+      margin-left: 0.5rem;
+    }
+  }
+
+  /* ---------- print stylesheet ---------- */
+
+  @media print {
+    @page {
+      size: A4;
+      margin: 18mm 16mm 18mm 16mm;
+    }
+
+    :root {
+      --paper:        #ffffff;
+      --paper-deeper: #f7f5ef;
+      --ink:          #1a1a1a;
+      --ink-2:        #333333;
+      --ink-3:        #555555;
+      --rule:         #b8b8b8;
+      --rule-faint:   #d8d8d8;
+      --rust:         #8a3a1a;
+      --rust-mark:    #a04a28;
+      --turquoise:    #1a5a6a;
+    }
+
+    html, body {
+      background: #ffffff !important;
+      color: #1a1a1a !important;
+    }
+
+    .no-print,
+    .skip-link,
+    .titleblock__rule {
+      display: none !important;
+    }
+
+    .document {
+      max-width: 100%;
+      padding: 0;
+    }
+
+    .document > * + * {
+      margin-top: 1rem;
+    }
+
+    .titleblock__name {
+      font-size: 2.25rem;
+    }
+
+    .titleblock__row--rule a,
+    .colophon a {
+      display: none;
+    }
+
+    .group-head {
+      padding-top: 0.6rem;
+      padding-bottom: 0.3rem;
+      page-break-after: avoid;
+      break-after: avoid;
+    }
+
+    .cv-row {
+      padding: 0.4rem 0;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .cv-row__title {
+      font-size: 0.95rem;
+    }
+
+    .cv-row__sub,
+    .cv-row__org {
+      font-size: 0.78rem;
+    }
+
+    .cv-row__date {
+      font-size: 0.72rem;
+    }
+
+    a {
+      color: #1a1a1a !important;
+      text-decoration: none !important;
+    }
+
+    .lede__text {
+      font-size: 1.4rem;
+    }
+
+    section.lede,
+    .cv-actions {
+      page-break-after: avoid;
+    }
+
+    .colophon__rule {
+      background: #b8b8b8;
+    }
+  }
+</style>
